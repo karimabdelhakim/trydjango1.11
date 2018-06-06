@@ -17,7 +17,8 @@ class RestaurantCreateForm(forms.Form):
 #for the class based view
 class RestaurantLocationCreateForm(forms.ModelForm):
     #email = forms.EmailField()
-    category = forms.CharField(required=False,validators=[validate_category])
+    # you can add the validators here or in the model
+    # category = forms.CharField(required=False,validators=[validate_category])
 
     class Meta:
         model = RestaurantLocation
