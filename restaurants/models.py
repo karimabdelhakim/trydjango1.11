@@ -1,10 +1,15 @@
 from django.db import models
 from django.db.models.signals import pre_save, post_save
+from django.conf import settings
 from .utils import unique_slug_generator
 from django.dispatch import receiver
 from .validators import validate_category
 
+
+User = settings.AUTH_USER_MODEL
+
 class RestaurantLocation(models.Model):
+    owner = models.ForeignKey(User) #user_instance.restaurantlocation_set.all()
     name = models.CharField(max_length=120)
     location = models.CharField(max_length=120, null=True, blank=True)
     category = models.CharField(
